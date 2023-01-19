@@ -16,8 +16,9 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss'])
     <script src="{{ asset('assets/js/font-awesome.6.2.1.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
 </head>
-<body>
+<body class="bg-white">
     <div id="app">
         @yield('content')
         {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
