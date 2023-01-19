@@ -1,7 +1,132 @@
 <template>
   <div class="container-fluid">
     <div class="d-flex align-items-stretch">
-      <nav class="tw-vertical-menu position-fixed h-100">
+      <nav class="tw-vertical-menu position-fixed h-100 mt-4 p-3">
+        <div class="ms-4">
+          <div class="mb-4 p-3 rounded-circle vertical-menu-items w-fit">
+            <a class="navbar-brand">
+              <i class="fa-brands fa-twitter fs-2 text-primary"></i>
+            </a>
+          </div>
+          <div>
+            <!-- ITEMS -->
+            <div class="w-fit px-3 py-2 rounded-pill vertical-menu-items">
+              <a class="link-dark text-decoration-none" href="#">
+                <div class="row align-items-center g-0">
+                  <div class="w-auto me-2">
+                    <i class="fa-solid fa-house fs-3"></i>
+                  </div>
+                  <div class="w-auto">
+                    <h5 class="vertical-menu-items-acive">Home</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="w-fit px-3 py-2 rounded-pill vertical-menu-items">
+              <a class="link-dark text-decoration-none" href="#">
+                <div class="row align-items-center g-0">
+                  <div class="w-auto me-2">
+                    <i class="fa-solid fa-hashtag fs-3"></i>
+                  </div>
+                  <div class="w-auto">
+                    <h5 class="">Explore</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="w-fit px-3 py-2 rounded-pill vertical-menu-items">
+              <a class="link-dark text-decoration-none" href="#">
+                <div class="row align-items-center g-0">
+                  <div class="w-auto me-2">
+                    <i class="fa-regular fa-bell fs-3"></i>
+                  </div>
+                  <div class="w-auto">
+                    <h5 class="">Notifications</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="w-fit px-3 py-2 rounded-pill vertical-menu-items">
+              <a class="link-dark text-decoration-none" href="#">
+                <div class="row align-items-center g-0">
+                  <div class="w-auto me-2">
+                    <i class="fa-regular fa-envelope fs-3"></i>
+                  </div>
+                  <div class="w-auto">
+                    <h5 class="">Messages</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="w-fit px-3 py-2 rounded-pill vertical-menu-items">
+              <a class="link-dark text-decoration-none" href="#">
+                <div class="row align-items-center g-0">
+                  <div class="w-auto me-2">
+                    <i class="fa-regular fa-bookmark fs-3"></i>
+                  </div>
+                  <div class="w-auto">
+                    <h5 class="">Bookmarks</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="w-fit px-3 py-2 rounded-pill vertical-menu-items">
+              <a class="link-dark text-decoration-none" href="#">
+                <div class="row align-items-center g-0">
+                  <div class="w-auto me-2">
+                    <i class="fa-solid fa-table-list fs-3"></i>
+                  </div>
+                  <div class="w-auto">
+                    <h5 class="">Lists</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="w-fit px-3 py-2 rounded-pill vertical-menu-items">
+              <a class="link-dark text-decoration-none" href="#">
+                <div class="row align-items-center g-0">
+                  <div class="w-auto me-2">
+                    <i class="fa-regular fa-user fs-3"></i>
+                  </div>
+                  <div class="w-auto">
+                    <h5 class="">Profile</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="mt-4">
+              <a href="#tw-tweet" class="text-decoration-none">
+                <div class="bg-primary rounded-pill fw-bold text-center text-white p-3 h5 cursor-pointer btn-primary">Tweet</div>
+              </a>
+            </div>
+
+            <div class="dropup">
+              <div class="row align-items-center g-0 px-3 py-2 rounded-pill bg-secondary-custom cursor-pointer" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="w-auto">
+                  sdsq
+                </div>
+                <div class="col">
+                  <p><strong>Calvin Harris</strong></p>
+                  <p class="text-muted"><span>@CalvinHarris</span></p>
+                </div>
+                <div class="col-2 mb-4">
+                  <strong class="fs-2">...</strong>
+                </div>
+              </div>
+                <ul class="dropdown-menu w-100">
+                  <li><a class="dropdown-item fw-bolder" href="#">Log out @CalvinHarris</a></li>
+                </ul>
+            </div>
+            <!-- ITEMS -->
+          </div>
+        </div>
       </nav>
       <section class="tw-main border-end border-start">
           <!-- CENTER SEARCH -->
@@ -23,10 +148,8 @@
             </div>
           </div>
           <!-- FIN CENTER SEARCH -->
-
-          <div class="tw-home-content px-0 text-justify">
+          <div class="tw-home-content px-0 text-justify" id="tw-tweet">
             <!-- PUBLIEZ -->
-
             <div class="border-top border-bottom p-3 row g-0">
               <div class="w-auto">
 
@@ -44,30 +167,30 @@
                   </ul>
                 </div>
                 <div class="mb-3">
-                  <input type="text" placeholder="What's happenning?" class="form-control without-border">
+                  <textarea class="form-control without-border" placeholder="What's happenning?"></textarea>
                 </div>
                 <div class="border-bottom mb-3 pb-3">
                   <strong class="text-primary ms-3">everyone can reply</strong>
                 </div>
                 <div class="row align-items-center">
                   <div class="col-10 ps-3">
-                    <i class="fa-solid fa-gear fs-4 tw-icon-setting text-secondary-custom text-primary mx-2"></i>
-                    <i class="fa-solid fa-magnifying-glass fs-4 text-secondary-custom text-primary mx-2"></i>
-                    <i class="fa-solid fa-gear fs-4 tw-icon-setting text-secondary-custom text-primary mx-2"></i>
-                    <i class="fa-solid fa-magnifying-glass fs-4 text-secondary-custom text-primary mx-2"></i>
-                    <i class="fa-solid fa-gear fs-4 tw-icon-setting text-secondary-custom text-primary mx-2"></i>
-                    <i class="fa-solid fa-gear fs-4 tw-icon-setting text-secondary-custom text-primary mx-2"></i>
+                    <i class="fa-regular fa-image fs-4 text-secondary-custom text-primary mx-2"></i>
+                    <i class="fa-regular fa-face-smile fs-4 text-secondary-custom text-primary mx-2"></i>
+                    <i class="fa-regular fa-calendar-days fs-4 text-secondary-custom text-primary mx-2"></i>
+                    <i class="fa-solid fa-location-dot fs-4 text-secondary-custom text-primary mx-2"></i>
                   </div>
                   <div class="col-2">
-                    <button class="btn btn-primary rounded-pill">Tweet</button>
+                    <button class="btn btn-primary rounded-pill fw-bolder">Tweet</button>
                   </div>
                 </div>
                 </form>
               </div>
             </div>
-
             <!-- FIN PUBLIEZ -->
+
+            <!-- ACTUALITÉ -->
             <div class="tw-home-container">
+              <!-- ACTUALITÉ CART -->
               <div class="p-3 border-bottom">
                 <div class="row">
                   <div class="col-2">
@@ -100,6 +223,7 @@
                   </div>
                 </div>
               </div>
+              <!-- FIN ACTUALITÉ CART -->
 
               <!-- AUTRES CARD -->
               <div class="p-3 border-bottom">
@@ -116,8 +240,8 @@
 
                 </div>
               </div>
-
             </div>
+            <!-- FIN ACTUALITÉ -->
           </div>
       </section>
       <div class="tw-aside end-0 h-100 p-3">
@@ -241,29 +365,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- <button @click="getData">test</button>
     <div>
     </div> -->
@@ -324,11 +425,11 @@
 <style>
 
   .tw-vertical-menu{
-    width: 19%;
+    width: 23%;
   }
   .tw-main{
     width: 50%;
-    margin-left: 20%;
+    margin-left: 24%;
   }
   .tw-aside{
     width: 30%;
@@ -339,15 +440,15 @@
     width: 87%;
   }
   .tw-search-nav{
-    width: 48%;
+    width: 45.5%;
     height: 60px;
     right: auto;
     left: auto;
   }
   .tw-search-wrapper{
     top: 1%;
-    right: 32.5%;
-    width: 46%;
+    right: 31.5%;
+    width: 42%;
     left: auto;
   }
   .tw-home-content{
