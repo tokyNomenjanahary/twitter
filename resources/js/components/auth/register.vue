@@ -51,14 +51,17 @@
     </div>
   </div>
 </div>
-
+<div>
+  <AuthButton></AuthButton>
+</div>
 </template>
 
 <script setup>
   import { reactive } from "vue";
   import useAuth from '../../services/auth/index.js'
   import emitter from 'tiny-emitter/instance';
-  
+  import AuthButton from "../layout/authButton.vue"
+
   const connected = true
   const { error, register } = useAuth()
   const form = reactive({

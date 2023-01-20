@@ -39,11 +39,14 @@
     </div>
   </div>
 </div>
-
+<div>
+  <AuthButton></AuthButton>
+</div>
 </template>
 
 <script setup>
 import { reactive, ref } from "vue";
+import AuthButton from "../layout/authButton.vue"
 import useAuth from "../../services/auth";
 import emitter from 'tiny-emitter/instance';
 
@@ -62,6 +65,5 @@ const handleLogin = async () => {
     emitter.emit('isLoggedIn', connected)
   }
 };
-
 
 </script>

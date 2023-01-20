@@ -20,9 +20,8 @@
 </head>
 <body class="bg-white">
     <div id="app">
-        <div class="container-fluid">
-            <router-view/>
-        </div>
+        <nav-vertical></nav-vertical>
+        <router-view/>
     </div>
     @vite(['resources/js/app.js'])
 </body>
