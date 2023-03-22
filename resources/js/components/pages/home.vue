@@ -13,18 +13,18 @@
             <!-- ACTUALITÉ -->
             <div class="tw-home-container">
               <!-- ACTUALITÉ CART -->
-              <div class="p-3 border-bottom">
+              <div class="p-3 border-bottom" v-for="tweet in tweets" :key="tweet.id">
                 <div class="row">
                   <div class="col-2">
                     <img src="" alt="">
                   </div>
                   <div class="col-10">
-                    <p><strong>Manga Mania</strong> <span class="text-muted">@mangamania . 58 mn</span></p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero</p>
+                    <p><strong>{{ tweet.user.name }}</strong> <span class="text-muted">@{{ tweet.user.name }}</span></p>
+                    <p>{{ tweet.description }}</p>
                   </div>
                 </div>
-                <div class="border rounded p-4 mt-4">
-
+                <div class="mt-2 w-fit mx-auto">
+                  <img :src="tweet.image_url" class="tw-image rounded">
                 </div>
                 <div class="row justify-content-center mt-3">
                   <div class="w-auto">
@@ -50,7 +50,7 @@
             <!-- FIN ACTUALITÉ -->
           </div>
       </section>
-      <div class="tw-aside end-0 h-100 p-3">
+      <div class="tw-aside end-0 h-100 p-3" id="tw-aside">
         <div class="">
           <div class="card rounded-5 mt-4 bg-secondary-custom">
             <div class="">
@@ -167,9 +167,20 @@
 </template>
 
 <script setup>
+  import { onMounted, ref } from '@vue/runtime-core';
   import axiosClient from '../../axios/index';
   import FormTweet from './formTweet.vue'
   import GlobalSearch from './globalSearch.vue'
+  import useTweet from '../../services/tweet/index'
+  import emitter from 'tiny-emitter/instance';
+
+  const asideHeight = ref(0)
+  emitter.on('created', async (success) => await getTweets() )
+  const { getTweets, tweets } = useTweet()
+  onMounted( async () => {
+    await getTweets()
+    asideHeight.value = document.getElementById('tw-aside').offsetHeight
+  })
 </script>
 
 <style>
@@ -184,5 +195,10 @@
   
   .tw-home-content{
     padding-top: 60px;
+  }
+
+  .tw-image {
+    max-height: 500px;
+    object-fit: contain;
   }
 </style>
