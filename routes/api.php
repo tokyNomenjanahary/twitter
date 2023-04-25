@@ -44,4 +44,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('tweets', TweetController::class);
     Route::get('tweet_confidents', [TweetConfidentController::class, 'index']);
     Route::get('tweet_locations', [LocationController::class, 'index']);
+    Route::get('user/{user_id}/tweet/{tweet_id}', [TweetController::class, 'isLikedByUserLoggedIn']);
 });

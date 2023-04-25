@@ -3,6 +3,11 @@ import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
+    server: {
+        hmr: {
+            host: 'https://d934-197-149-36-228.ngrok-free.app/',
+        },
+    },
     plugins: [
         vue({
             template: {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\TweetResource;
+use App\Models\Like;
 use App\Models\Tweet;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class TweetController extends Controller
      */
     public function index()
     {
-        $tweets = Tweet::with('location', 'tweet_confident', 'user')->latest()->get();
+        $tweets = Tweet::with('location', 'tweet_confident', 'user', 'likes')->latest()->get();
         return TweetResource::collection($tweets);
     }
 
@@ -38,7 +39,6 @@ class TweetController extends Controller
                 'public'
             );
         }
-
         $tweet = Tweet::create([
             'description' => $request->description,
             'image_url' => 'storage/' . $path,
@@ -46,7 +46,6 @@ class TweetController extends Controller
             'location_id' => $request->location_id,
             'tweet_confident_id' => $request->tweet_confident_id
         ]);
-
         return new TweetResource($tweet);
     }
 
@@ -93,5 +92,13 @@ class TweetController extends Controller
     public function destroy(Tweet $tweet)
     {
         //
+    }
+
+    public function isLikedByUserLoggedIn($user_id, $tweet_id)
+    {
+        $isLikedByUserLoggedIn = Like::where('user_id', $user_id)
+                                    ->where('tweet_id', $tweet_id)
+                                    ->first();
+        return response()->json(['isLikedByUserLoggedIn' => $isLikedByUserLoggedIn ? true : false]);
     }
 }

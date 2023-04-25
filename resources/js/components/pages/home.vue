@@ -7,7 +7,8 @@
           <!-- FIN CENTER SEARCH -->
           <div class="tw-home-content px-0 text-justify" id="tw-tweet">
             <!-- PUBLIEZ -->
-            <FormTweet />
+            <a>{{user.id }}</a>
+            <FormTweet :userId="user.id" />
             <!-- FIN PUBLIEZ -->
 
             <!-- ACTUALITÉ -->
@@ -27,9 +28,11 @@
                   <img :src="tweet.image_url" class="tw-image rounded">
                 </div>
                 <div class="row justify-content-center mt-3">
+                    {{ tweet.likedByCurrentUser }}
                   <div class="w-auto">
-                    <i class="fa-solid fa-heart"></i>
-                    <span class="text-muted"> 12,4</span>
+                    <i class="fa-solid fa-heart text-primary" v-if="tweet.likedByCurrentUser == true"></i>&nbsp;
+                    <i class="fa-solid fa-heart" v-if="tweet.likedByCurrentUser == false"></i>&nbsp;
+                    <span class="text-muted">{{ tweet.likes.length }}</span>
                   </div>
                   <div class="w-auto">
                     <i class="fa-solid fa-comment"></i>
@@ -176,9 +179,18 @@
 
   const asideHeight = ref(0)
   emitter.on('created', async (success) => await getTweets() )
-  const { getTweets, tweets } = useTweet()
+  const { getTweets, tweets, getUser, checkIfIsLikedByUserLoggedIn, hasLiked, user } = useTweet()
   onMounted( async () => {
+    await getUser()
     await getTweets()
+    for (let i = 0; i < tweets.value.length; i++) {
+      await checkIfIsLikedByUserLoggedIn(user.value.id, tweets.value[i].id)
+      if (hasLiked.value) {
+        tweets.value[i]['likedByCurrentUser'] = true
+      } else {
+        tweets.value[i]['likedByCurrentUser'] = false
+      }
+    }
     asideHeight.value = document.getElementById('tw-aside').offsetHeight
   })
 </script>

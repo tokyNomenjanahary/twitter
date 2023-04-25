@@ -12,9 +12,12 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.6.2.1.css', true) }}"> --}}
     <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.6.2.1.css') }}">
     <!-- Scripts -->
     @vite(['resources/sass/app.scss'])
+    {{-- <script src="{{ asset('assets/js/font-awesome.6.2.1.js', true) }}"></script>
+    <link rel="stylesheet" href="{{ asset('assets/css/app.css', true) }}"> --}}
     <script src="{{ asset('assets/js/font-awesome.6.2.1.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
 </head>

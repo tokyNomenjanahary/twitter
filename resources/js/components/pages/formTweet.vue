@@ -1,7 +1,6 @@
 <template>
   <div class="border-top border-bottom p-3 row g-0">
     <div class="w-auto">
-
     </div>
     <div class="col-12">
       <form @submit.prevent="submitMyTweet">
@@ -54,8 +53,8 @@
   import { onMounted, reactive, ref, watch } from "vue";
   import useTweet from "../../services/tweet/index"
   import emitter from 'tiny-emitter/instance';
-  
-  const { createTweet, getTweetConfidents, getTweets, getLocations, getUser, tweets, tweet, user, confidents, locations, error } = useTweet()
+  const props = defineProps(['userId'])
+  const { createTweet, getTweetConfidents, getTweets, getLocations, tweets, tweet, confidents, locations, error } = useTweet()
   const form = reactive({
     description: '',
     location_id: 1,
@@ -89,9 +88,10 @@
     let formData = new FormData()
     formData.append('image', imageFile.value)
     formData.append('description', form.description)
-    formData.append('user_id', user.value.id)
+    formData.append('user_id', props.userId)
     formData.append('tweet_confident_id', form.tweet_confident_id)
     formData.append('location_id', form.location_id)
+    console.log(...formData)
     await createTweet(formData)
     await resetForm()
     emitter.emit('created', true)
@@ -107,10 +107,7 @@
   onMounted(async () => {
     await getTweetConfidents()
     await getLocations()
-    await getUser()
   })
+
+  
 </script>
-
-<style>
-
-</style>

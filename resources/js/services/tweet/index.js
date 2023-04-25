@@ -8,10 +8,13 @@ export default function useTweet() {
   const user = ref([])
   const tweet = ref([])
   const error = ref(null)
+  const hasLiked = ref(false)
 
   const getTweets = async () => {
     await axiosClient.get('/tweets')
-    .then(res => tweets.value = res.data.data)
+    .then((res) => {
+      tweets.value = res.data.data
+    })
     .catch(err => console.log(err))
   }
 
@@ -39,17 +42,25 @@ export default function useTweet() {
     .catch(err => console.log(err))
   }
 
+  const checkIfIsLikedByUserLoggedIn = async (user_id, tweet_id) => {
+    await axiosClient.get('user/'+ user_id + '/tweet/' + tweet_id)
+    .then(res => hasLiked.value = res.data.isLikedByUserLoggedIn)
+    .catch(err => console.log(err))
+  }
+
   return {
     getTweets,
     createTweet,
     getTweetConfidents,
     getLocations,
     getUser,
+    checkIfIsLikedByUserLoggedIn,
     tweets,
     tweet,
     user,
     confidents,
     locations,
+    hasLiked,
     error
   }
 }
